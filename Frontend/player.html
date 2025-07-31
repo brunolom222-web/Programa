@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugador - Concurso</title>
+    <link rel="stylesheet" href="./css/player.css">
+</head>
+<body>
+    <div class="container">
+        <div id="joinScreen">
+            <h1>🏆¡Bienvenido al Concurso!🏆</h1>
+            <input type="text" id="playerName" placeholder="Ingresa tu nombre" required>
+            <button id="joinBtn">Unirse al Juego</button>
+            <p id="errorMsg"></p>
+        </div>
+
+        <div id="gameScreen">
+            <h2 id="welcomeMessage"></h2>
+            <div id="questionContainer"></div>
+            <div class="score-time">
+                <p>Puntaje: <span id="playerScore">0</span></p>
+                <p>Tiempo: <span id="timeLeft">15</span>s</p>
+            </div>
+            <div id="optionsContainer"></div>
+        </div>
+    </div>
+
+    <!-- Socket.IO -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- Script del jugador -->
+    <script src="./js/player.js"></script>
+</body>
+</html>

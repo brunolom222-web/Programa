@@ -1,0 +1,52 @@
+[
+  {
+    "question": "¿Cuál es el río más largo del mundo?",
+    "options": [
+      "Nilo",
+      "Amazonas",
+      "Misisipi"
+    ],
+    "correctAnswer": 1,
+    "id": "1753224787629"
+  },
+  {
+    "question": "¿Cuál es el color que se forma al mezclar rojo y azul?",
+    "options": [
+      "Verde",
+      "Marrón",
+      "Morado"
+    ],
+    "correctAnswer": 2,
+    "id": "1753225241551"
+  },
+  {
+    "question": "¿Cuántos días le toma a la tierra dar una vuelta a la órbita del sol?",
+    "options": [
+      "365 días",
+      "1 día",
+      "30 días"
+    ],
+    "correctAnswer": 0,
+    "id": "1753240999210"
+  },
+  {
+    "question": "¿Cuál es el país más pequeño del mundo?",
+    "options": [
+      "Cuba",
+      "Madagascar",
+      "El Vaticano"
+    ],
+    "correctAnswer": 2,
+    "id": "1753241064272"
+  },
+  {
+    "question": "¿Qué tipo de animal es un sapo?",
+    "options": [
+      "Anfibio",
+      "Réptil",
+      "Invertebrado"
+    ],
+    "correctAnswer": 0,
+    "id": "1753241244334"
+  }
+]

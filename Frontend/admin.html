@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <style>
+        .hidden { display: none; }
+        #adminStatus {
+            font-weight: bold;
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .question-form, .game-controls, .questions-list {
+            margin: 20px 0;
+            padding: 15px;
+            background: #c5f3d3;
+            border-radius: 4px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            border: 1px solid #756d6d;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #0c6110;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background-color: #0b7dda;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #questionsList {
+            list-style-type: none;
+            padding: 0;
+        }
+        #questionsList li {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+         #startGameBtn {
+            background-color: #ee7c12;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Panel de Administración</h1>
+        <div id="adminStatus">Conectando al servidor...</div>
+        
+        <div class="question-form">
+            <h2>Añadir Nueva Pregunta</h2>
+            <input type="text" id="questionText" placeholder="Texto de la pregunta" required>
+            <input type="text" id="option1" placeholder="Opción 1" required>
+            <input type="text" id="option2" placeholder="Opción 2" required>
+            <input type="text" id="option3" placeholder="Opción 3" required>
+            
+            <label for="correctOption">Respuesta correcta:</label>
+            <select id="correctOption" required>
+                <option value="0">Opción 1</option>
+                <option value="1">Opción 2</option>
+                <option value="2">Opción 3</option>
+            </select>
+            
+            <button id="addQuestionBtn">Añadir Pregunta</button>
+        </div>
+
+        <div class="game-controls">
+            <h2>Control del Juego</h2>
+            <button id="startGameBtn">Iniciar Concurso</button>
+        </div>
+
+        <div class="questions-list">
+            <h2>Preguntas Actuales</h2>
+            <ul id="questionsList"></ul>
+        </div>
+    </div>
+
+    <!-- Socket.IO -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./js/admin.js"></script>
+</body>
+</html>
