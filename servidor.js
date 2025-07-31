@@ -67,13 +67,16 @@ app.get('/', (req, res) => {
 });
 
 // Ruta para admin (si existe)
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'player.html'));
+});
+
 app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend', 'admin.html'));
 });
 
-app.get('/player', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'player.html'));
-});
+
 
 // Health check para Render
 app.get('/health', (req, res) => {
