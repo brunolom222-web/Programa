@@ -417,7 +417,12 @@ function endGame() {
 
 const PORT = process.env.PORT || 3000;
 
-server.listen(PORT, '0.0.0.0', () => {
+server.listen(PORT, () => {  // <-- Solo usa PORT, sin HOST
+  questions = loadQuestions();
+  console.log(`
+  🚀 Servidor listo en puerto ${PORT}
+  `);
+
   questions = loadQuestions();
   console.log(`
   🚀 Servidor listo en puerto ${PORT}
