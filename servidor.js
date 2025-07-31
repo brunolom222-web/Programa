@@ -56,7 +56,6 @@ function saveQuestions() {
 }
 
 // Middleware
-app.use(express.static(path.join(__dirname, 'frontend')));
 // Configuración de archivos estáticos (¡ESSENCIAL PARA RENDER!)
 app.use(express.static(path.join(__dirname, 'frontend'))); // Para player.html
 app.use('/css', express.static(path.join(__dirname, 'frontend', 'css'))); // Para CSS
@@ -67,12 +66,13 @@ app.get('/', (req, res) => {
   res.redirect('/player');
 });
 
+// Ruta para admin (si existe)
 app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/admin.html'));
+  res.sendFile(path.join(__dirname, 'frontend', 'admin.html'));
 });
 
 app.get('/player', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/player.html'));
+  res.sendFile(path.join(__dirname, 'frontend', 'player.html'));
 });
 
 // Health check para Render
