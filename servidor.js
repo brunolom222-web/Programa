@@ -72,6 +72,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend', 'player.html'));
 });
 
+app.get('/player', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'player.html'));
+});
+
 app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend', 'admin.html'));
 });
