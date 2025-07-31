@@ -57,9 +57,9 @@ function saveQuestions() {
 
 // Middleware
 // Configuración de archivos estáticos (¡ESSENCIAL PARA RENDER!)
-app.use(express.static(path.join(__dirname, 'frontend'))); // Para player.html
-app.use('/css', express.static(path.join(__dirname, 'frontend', 'css'))); // Para CSS
-app.use('/js', express.static(path.join(__dirname, 'frontend', 'js'))); // Para JS
+app.use(express.static(path.join(__dirname, 'Frontend'))); // Para player.html
+app.use('/css', express.static(path.join(__dirname, 'Frontend', 'css'))); // Para CSS
+app.use('/js', express.static(path.join(__dirname, 'Frontend', 'js'))); // Para JS
 
 // Rutas
 app.get('/', (req, res) => {
