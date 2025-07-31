@@ -69,15 +69,15 @@ app.get('/', (req, res) => {
 // Ruta para admin (si existe)
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'player.html'));
+  res.sendFile(path.join(__dirname, 'Frontend', 'player.html'));
 });
 
 app.get('/player', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'player.html'));
+  res.sendFile(path.join(__dirname, 'Frontend', 'player.html'));
 });
 
 app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'admin.html'));
+  res.sendFile(path.join(__dirname, 'Frontend', 'admin.html'));
 });
 
 
