@@ -91,10 +91,51 @@
             <button id="startGameBtn">Iniciar Concurso</button>
         </div>
 
-        <div class="questions-list">
-            <h2>Preguntas Actuales</h2>
-            <ul id="questionsList"></ul>
-        </div>
+        <!-- Dentro de <div class="container">, después del game-controls -->
+<div class="questions-list">
+    <h2>📝 Lista de Preguntas Cargadas</h2>
+    <div id="questionsContainer">
+        <!-- Aquí se insertarán dinámicamente las preguntas -->
+        <p class="no-questions">No hay preguntas cargadas aún.</p>
+    </div>
+</div>
+
+<style>
+    .questions-list {
+        margin-top: 30px;
+        background: #c5f3d3;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .question-item {
+        background: white;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-left: 4px solid #4CAF50;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .question-item h3 {
+        margin-top: 0;
+        color: #333;
+    }
+    .options-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .options-list li {
+        padding: 5px 0;
+    }
+    .correct-option {
+        font-weight: bold;
+        color: #4CAF50;
+    }
+    .no-questions {
+        color: #666;
+        font-style: italic;
+    }
+</style>
+
     </div>
 
     <!-- Socket.IO -->

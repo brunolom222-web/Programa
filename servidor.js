@@ -96,31 +96,53 @@ app.get('/health', (req, res) => {
 io.on('connection', (socket) => {
   console.log(`🔌 [${new Date().toLocaleTimeString()}] Cliente conectado: ${socket.id}`);
 
-  // Registrar ADMIN
-  socket.on('iamadmin', () => {
+// Registrar ADMIN
+socket.on('iamadmin', () => {
     try {
-      players[socket.id] = {
-        id: socket.id,
-        name: `Admin-${socket.id.substr(0, 4)}`,
-        isAdmin: true,
-        connected: true,
-        answers: []
-      };
+        players[socket.id] = {
+            id: socket.id,
+            name: `Admin-${socket.id.substr(0, 4)}`,
+            isAdmin: true,
+            connected: true,
+            answers: []
+        };
 
-      socket.join('admins');
-      console.log(`👑 [${new Date().toLocaleTimeString()}] Admin registrado: ${socket.id}`);
-      socket.emit('adminConfirmed');
+        socket.join('admins');
+        console.log(`👑 [${new Date().toLocaleTimeString()}] Admin registrado: ${socket.id}`);
+        
+        // Enviar datos iniciales al admin
+        socket.emit('initData', {
+            players: Object.values(players),
+            questions: questions
+        });
 
-      socket.emit('initData', {
-        players: Object.values(players),
-        questions: questions
-      });
+        socket.emit('adminConfirmed');
+
+        // Manejar solicitudes de actualización
+        socket.on('requestQuestionsUpdate', () => {
+            socket.emit('initData', {
+                players: Object.values(players),
+                questions: questions
+            });
+        });
 
     } catch (error) {
-      console.error('❌ Error registrando admin:', error);
-      socket.emit('adminError', error.message);
+        console.error('❌ Error registrando admin:', error);
+        socket.emit('adminError', error.message);
     }
-  });
+});
+
+// Manejar eliminación de preguntas
+socket.on('deleteQuestion', (questionId) => {
+    try {
+        questions = questions.filter(q => q.id !== questionId);
+        saveQuestions();
+        io.to('admins').emit('questionDeleted');
+        console.log(`🗑️ [${new Date().toLocaleTimeString()}] Pregunta eliminada: ${questionId}`);
+    } catch (error) {
+        console.error('❌ Error eliminando pregunta:', error);
+    }
+});
 
   // Registrar JUGADOR
   socket.on('registerPlayer', (playerName, callback) => {

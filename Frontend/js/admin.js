@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const adminStatus = document.getElementById('adminStatus');
     const addQuestionBtn = document.getElementById('addQuestionBtn');
     const startGameBtn = document.getElementById('startGameBtn');
-    const questionList = document.getElementById('questionsList');
     
     // Conexión Socket.IO
     const socket = io();
@@ -39,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function enableAdminControls() {
         addQuestionBtn.disabled = false;
         startGameBtn.disabled = false;
-        updateQuestionList();
     }
 
     // 5. Añadir nueva pregunta
@@ -68,14 +66,75 @@ document.addEventListener('DOMContentLoaded', () => {
         socket.emit('addQuestion', questionData, (response) => {
             if (response.success) {
                 alert('Pregunta añadida exitosamente');
-                document.getElementById('questionForm').reset();
+                document.getElementById('questionText').value = '';
+                document.getElementById('option1').value = '';
+                document.getElementById('option2').value = '';
+                document.getElementById('option3').value = '';
             } else {
                 alert(response.error || 'Error al añadir pregunta');
             }
         });
     });
 
-    // 6. Iniciar el juego
+    // 6. Mostrar preguntas al recibir datos iniciales
+    socket.on('initData', (data) => {
+        renderQuestionsList(data.questions);
+    });
+
+    // 7. Función para renderizar preguntas
+    function renderQuestionsList(questions) {
+        const container = document.getElementById('questionsContainer') || createQuestionsContainer();
+        
+        if (!questions || questions.length === 0) {
+            container.innerHTML = '<p class="no-questions">No hay preguntas cargadas aún.</p>';
+            return;
+        }
+
+        container.innerHTML = questions.map((question, index) => `
+            <div class="question-item">
+                <h3>Pregunta ${index + 1}: ${question.question}</h3>
+                <ul class="options-list">
+                    ${question.options.map((option, optIndex) => `
+                        <li ${optIndex === question.correctAnswer ? 'class="correct-option"' : ''}>
+                            ${optIndex + 1}. ${option}
+                            ${optIndex === question.correctAnswer ? ' ✅' : ''}
+                        </li>
+                    `).join('')}
+                </ul>
+                <p><small>ID: ${question.id}</small></p>
+                <button class="delete-btn" data-id="${question.id}">Eliminar</button>
+            </div>
+        `).join('');
+
+        // Agregar event listeners para eliminar
+        document.querySelectorAll('.delete-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const questionId = e.target.dataset.id;
+                if (confirm('¿Está seguro de eliminar esta pregunta?')) {
+                    socket.emit('deleteQuestion', questionId);
+                }
+            });
+        });
+    }
+
+    // 8. Crear contenedor si no existe
+    function createQuestionsContainer() {
+        const container = document.createElement('div');
+        container.id = 'questionsContainer';
+        const section = document.createElement('div');
+        section.className = 'questions-list';
+        section.innerHTML = '<h2>📝 Lista de Preguntas Cargadas</h2>';
+        section.appendChild(container);
+        document.querySelector('.container').appendChild(section);
+        return container;
+    }
+
+    // 9. Actualizar lista cuando se elimina pregunta
+    socket.on('questionDeleted', () => {
+        socket.emit('requestQuestionsUpdate');
+    });
+
+    // 10. Iniciar el juego
     startGameBtn.addEventListener('click', () => {
         if (!isAdmin) {
             alert('Error: No tiene permisos de administrador');
@@ -93,28 +152,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 7. Actualizar lista de preguntas
-    function updateQuestionList() {
-        socket.emit('getQuestions', null, (questions) => {
-            questionList.innerHTML = '';
-            questions.forEach((q, index) => {
-                const li = document.createElement('li');
-                li.innerHTML = `
-                    <strong>Pregunta ${index + 1}:</strong> ${q.question}
-                    <br>Opciones: ${q.options.join(', ')}
-                    <br>Respuesta correcta: Opción ${q.correctAnswer + 1}
-                `;
-                questionList.appendChild(li);
-            });
-        });
-    }
+    // 11. Manejar actualizaciones del servidor
+    socket.on('questionAdded', () => {
+        socket.emit('requestQuestionsUpdate');
+    });
 
-    // 8. Manejar actualizaciones del servidor
-    socket.on('questionAdded', updateQuestionList);
     socket.on('gameStarted', () => alert('El juego ha comenzado!'));
     socket.on('error', (errorMsg) => alert(`Error: ${errorMsg}`));
 
-    // 9. Inicialización
+    // 12. Inicialización
     addQuestionBtn.disabled = true;
     startGameBtn.disabled = true;
 });
