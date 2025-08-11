@@ -68,6 +68,11 @@
     <div class="container">
         <h1>Panel de Administración</h1>
         <div id="adminStatus">Conectando al servidor...</div>
+
+                <div class="game-controls">
+            <h2>Control del Juego</h2>
+            <button id="startGameBtn">Iniciar Concurso</button>
+        </div>
         
         <div class="question-form">
             <h2>Añadir Nueva Pregunta</h2>
@@ -82,15 +87,25 @@
                 <option value="1">Opción 2</option>
                 <option value="2">Opción 3</option>
             </select>
+
+            <!-- En la sección del formulario de preguntas, después del select de correctOption -->
+<label for="questionCategory">Categoría:</label>
+<select id="questionCategory" required>
+    <option value="geografía">Geografía</option>
+    <option value="biología">Biología</option>
+    <option value="tecnología">Tecnología</option>
+    <option value="matemáticas">Matemáticas</option>
+    <option value="arte">Arte</option>
+    <option value="deportes">Deportes</option>
+    <option value="astronomía">Astronomía</option>
+    <option value="curiosidades">Curiosidades</option>
+    <option value="adivinanza">Adivinanza</option>
+</select>
             
             <button id="addQuestionBtn">Añadir Pregunta</button>
         </div>
 
-        <div class="game-controls">
-            <h2>Control del Juego</h2>
-            <button id="startGameBtn">Iniciar Concurso</button>
-        </div>
-
+        
         <!-- Dentro de <div class="container">, después del game-controls -->
 <div class="questions-list">
     <h2>📝 Lista de Preguntas Cargadas</h2>

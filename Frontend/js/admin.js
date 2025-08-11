@@ -54,7 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('option2').value.trim(),
                 document.getElementById('option3').value.trim()
             ],
-            correctAnswer: parseInt(document.getElementById('correctOption').value)
+            correctAnswer: parseInt(document.getElementById('correctOption').value),
+            category: document.getElementById('questionCategory').value // ← Nueva línea
         };
 
         // Validación
@@ -91,20 +92,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         container.innerHTML = questions.map((question, index) => `
-            <div class="question-item">
-                <h3>Pregunta ${index + 1}: ${question.question}</h3>
-                <ul class="options-list">
-                    ${question.options.map((option, optIndex) => `
-                        <li ${optIndex === question.correctAnswer ? 'class="correct-option"' : ''}>
-                            ${optIndex + 1}. ${option}
-                            ${optIndex === question.correctAnswer ? ' ✅' : ''}
-                        </li>
-                    `).join('')}
-                </ul>
-                <p><small>ID: ${question.id}</small></p>
-                <button class="delete-btn" data-id="${question.id}">Eliminar</button>
-            </div>
-        `).join('');
+    <div class="question-item">
+        <h3>Pregunta ${index + 1}: ${question.question}</h3>
+        <p><strong>Categoría:</strong> ${question.category || 'Sin categoría'}</p>
+        <ul class="options-list">
+            ${question.options.map((option, optIndex) => `
+                <li ${optIndex === question.correctAnswer ? 'class="correct-option"' : ''}>
+                    ${optIndex + 1}. ${option}
+                    ${optIndex === question.correctAnswer ? ' ✅' : ''}
+                </li>
+            `).join('')}
+        </ul>
+        <p><small>ID: ${question.id}</small></p>
+        <button class="delete-btn" data-id="${question.id}">Eliminar</button>
+    </div>
+`).join('');
 
         // Agregar event listeners para eliminar
         document.querySelectorAll('.delete-btn').forEach(btn => {

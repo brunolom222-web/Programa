@@ -7,7 +7,8 @@
       "Misisipi"
     ],
     "correctAnswer": 1,
-    "id": "1753224787629"
+    "id": "1753224787629",
+    "category": "geografia"
   },
   {
     "question": "¿Cuál es el color que se forma al mezclar rojo y azul?",
@@ -17,7 +18,8 @@
       "Morado"
     ],
     "correctAnswer": 2,
-    "id": "1753225241551"
+    "id": "1753225241551",
+    "category": "arte"
   },
   {
     "question": "¿Cuántos días le toma a la tierra dar una vuelta a la órbita del sol?",
@@ -27,7 +29,8 @@
       "30 días"
     ],
     "correctAnswer": 0,
-    "id": "1753240999210"
+    "id": "1753240999210",
+    "category": "astronomia"
   },
   {
     "question": "¿Cuál es el país más pequeño del mundo?",
@@ -37,7 +40,8 @@
       "El Vaticano"
     ],
     "correctAnswer": 2,
-    "id": "1753241064272"
+    "id": "1753241064272",
+    "category": "geografia"
   },
   {
     "question": "¿Qué tipo de animal es un sapo?",
@@ -47,6 +51,423 @@
       "Invertebrado"
     ],
     "correctAnswer": 0,
-    "id": "1753241244334"
+    "id": "1753241244334",
+    "category": "biologia"
+  },
+  {
+    "question": "¿Cómo se llama la pantalla de la computadora?",
+    "options": [
+      "CPU",
+      "Monitor",
+      "El software"
+    ],
+    "correctAnswer": 1,
+    "id": "1754838247961",
+    "category": "tecnologia"
+  },
+  {
+    "question": "¿Cuál es la unidad básica de la vida?",
+    "options": [
+      "El oxigeno",
+      "La sangre",
+      "La célula"
+    ],
+    "correctAnswer": 2,
+    "id": "1754838335867",
+    "category": "biologia"
+  },
+  {
+    "question": "¿Cuál es el único deporte que se ha jugado en la Luna?",
+    "options": [
+      "Golf",
+      "Fútbol",
+      "Voley"
+    ],
+    "correctAnswer": 0,
+    "id": "1754839231813",
+    "category": "curiosidades"
+  },
+  {
+    "question": "¿Qué reino incluye a los hongos?",
+    "options": [
+      "Plantae",
+      "Protista",
+      "Fungi"
+    ],
+    "correctAnswer": 2,
+    "id": "1754839342882",
+    "category": "biologia"
+  },
+  {
+    "question": "¿Cuál es el estado más al oriente de Venezuela?",
+    "options": [
+      "Anzoátegui",
+      "Amazonas",
+      "Delta Amacuro"
+    ],
+    "correctAnswer": 2,
+    "id": "1754839497970",
+    "category": "geografia"
+  },
+  {
+    "question": "¿Las arañas son insectos?",
+    "options": [
+      "Sí, son insectos",
+      "No, son arácnidos",
+      "No, son invertebrados"
+    ],
+    "correctAnswer": 1,
+    "id": "1754839767078",
+    "category": "biologia"
+  },
+  {
+    "question": "¿Qué figura geométrica tiene 4 lados iguales?",
+    "options": [
+      "Cuadrado",
+      "Tetaedro",
+      "Triangulo"
+    ],
+    "correctAnswer": 0,
+    "id": "1754840349746",
+    "category": "matematicas"
+  },
+  {
+    "question": "ADIVINANZA: Tengo cabeza redonda, sin nariz, ojos, ni frente. Mi cuerpo se compone tan sólo de blancos dientes",
+    "options": [
+      "La boca",
+      "Las uñas",
+      "El ajo"
+    ],
+    "correctAnswer": 2,
+    "id": "1754840704905",
+    "category": "adivinanza"
+  },
+  {
+    "question": "¿Cuánto es 6 × 8?",
+    "options": [
+      "56",
+      "38",
+      "48"
+    ],
+    "correctAnswer": 2,
+    "id": "1754840893452",
+    "category": "matematicas"
+  },
+  {
+    "question": "¿Qué programa usamos para acceder a Internet?",
+    "options": [
+      "Una computadora",
+      "Un navegador web",
+      "El Wi-Fi"
+    ],
+    "correctAnswer": 1,
+    "id": "1754841233972",
+    "category": "tecnologia"
+  },
+  {
+    "question": "¿Qué país ha ganado más Copas Mundiales de Fútbol?",
+    "options": [
+      "Argentina",
+      "Brasil",
+      "Colombia"
+    ],
+    "correctAnswer": 1,
+    "id": "1754841343470",
+    "category": "deportes"
+  },
+  {
+    "question": "Si un ángulo mide 90°, ¿Cómo se llama?",
+    "options": [
+      "Recto",
+      "Llano",
+      "Agudo"
+    ],
+    "correctAnswer": 0,
+    "id": "1754841493824",
+    "category": "matematicas"
+  },
+  {
+    "question": "¿Qué tipo de animal es la ballena: mamífero o pez?",
+    "options": [
+      "Mamífero porque poseen glándulas mamarias y pulmones.",
+      "Pez porque vive en el agua.",
+      "No es ni pez ni mamífero."
+    ],
+    "correctAnswer": 0,
+    "id": "1754841947900",
+    "category": "biologia"
+  },
+  {
+    "question": "¿Cuántos jugadores hay en un equipo de fútbol?",
+    "options": [
+      "8",
+      "9",
+      "11"
+    ],
+    "correctAnswer": 2,
+    "id": "1754842328609",
+    "category": "deportes"
+  },
+  {
+    "question": "¿A qué pertenece el mouse o ratón de una computadora?",
+    "options": [
+      "CPU",
+      "Hardware",
+      "Software"
+    ],
+    "correctAnswer": 1,
+    "id": "1754842580393",
+    "category": "tecnologia"
+  },
+  {
+    "question": "¿Qué famosa cascada está en el estado Bolívar?",
+    "options": [
+      "El Auyantepuy",
+      "Roraima",
+      "El Salto Angel"
+    ],
+    "correctAnswer": 2,
+    "id": "1754842977573",
+    "category": "geografia"
+  },
+  {
+    "question": "¿Qué parte del árbol absorbe agua del suelo?",
+    "options": [
+      "Tallo",
+      "Raíces",
+      "Hojas"
+    ],
+    "correctAnswer": 1,
+    "id": "1754867992056"
+  },
+  {
+    "question": "¿Cuál es el lago más grande de Venezuela?",
+    "options": [
+      "Lago de Valencia",
+      "El Laguito",
+      "Lago de Maracaibo"
+    ],
+    "correctAnswer": 2,
+    "id": "1754868175253"
+  },
+  {
+    "question": "¿Qué gas necesitan las plantas para la fotosíntesis?",
+    "options": [
+      "H₂O",
+      "CO₂",
+      "C₂O"
+    ],
+    "correctAnswer": 1,
+    "id": "1754868315866"
+  },
+  {
+    "question": "¿Qué elemento químico tiene símbolo \"Au\"?",
+    "options": [
+      "Aluminio",
+      "Arsenio",
+      "Oro"
+    ],
+    "correctAnswer": 2,
+    "id": "1754868563700"
+  },
+  {
+    "question": "¿Qué arte antiguo se hace doblando papel?",
+    "options": [
+      "Origami",
+      "Manualidades",
+      "Ninguna de las anteriores"
+    ],
+    "correctAnswer": 0,
+    "id": "1754868799441"
+  },
+  {
+    "question": "¿Cuánto es ½ + ½?",
+    "options": [
+      "2",
+      "1",
+      "4"
+    ],
+    "correctAnswer": 1,
+    "id": "1754869310738"
+  },
+  {
+    "question": "¿Qué pesa más: 1 kg de hierro o 1 kg de algodón?",
+    "options": [
+      "El hierro pesa más",
+      "El algodón pesa más",
+      "Ninguna de las anteriores"
+    ],
+    "correctAnswer": 2,
+    "id": "1754869513156"
+  },
+  {
+    "question": "¿Cuál es el sistema operativo más utilizado a nivel mundial?",
+    "options": [
+      "Linux",
+      "Ubuntu",
+      "Windows"
+    ],
+    "correctAnswer": 2,
+    "id": "1754869600218"
+  },
+  {
+    "question": "¿Qué enzima del cuerpo humano descompone la leche?",
+    "options": [
+      "Lactasa",
+      "Ácido gástrico",
+      "Amilasa"
+    ],
+    "correctAnswer": 0,
+    "id": "1754869930519"
+  },
+  {
+    "question": "¿Cuál es el más largo del cuerpo?",
+    "options": [
+      "Humero",
+      "Fémur",
+      "Rotula"
+    ],
+    "correctAnswer": 1,
+    "id": "1754870078908"
+  },
+  {
+    "question": "¿Qué enfermedad es causada por falta de insulina?",
+    "options": [
+      "Epilepsia",
+      "Diabetes",
+      "Azúcar alta"
+    ],
+    "correctAnswer": 1,
+    "id": "1754870225843"
+  },
+  {
+    "question": "¿Qué molécula almacena información genética?",
+    "options": [
+      "La célula",
+      "ARN",
+      "ADN"
+    ],
+    "correctAnswer": 2,
+    "id": "1754870316254"
+  },
+  {
+    "question": "¿Qué órgano humano puede crecer de nuevo si se corta?",
+    "options": [
+      "Hígado",
+      "Lengua",
+      "Riñón"
+    ],
+    "correctAnswer": 0,
+    "id": "1754870422938"
+  },
+  {
+    "question": "¿Qué líder indígena luchó contra los españoles en Venezuela?",
+    "options": [
+      "Guaicaipuro",
+      "Urimare",
+      "Simón Bolívar"
+    ],
+    "correctAnswer": 0,
+    "id": "1754870676055"
+  },
+  {
+    "question": "¿Qué número es par?",
+    "options": [
+      "7",
+      "33",
+      "10"
+    ],
+    "correctAnswer": 2,
+    "id": "1754870749292"
+  },
+  {
+    "question": "¿Cuánto es 10-20?",
+    "options": [
+      "10",
+      "-10",
+      "1"
+    ],
+    "correctAnswer": 1,
+    "id": "1754870840720"
+  },
+  {
+    "question": "¿Cuántos meses tienen 28 días?",
+    "options": [
+      "Todos",
+      "1",
+      "2"
+    ],
+    "correctAnswer": 0,
+    "id": "1754870903593"
+  },
+  {
+    "question": "¿A qué se le denomina \"séptimo arte\"?",
+    "options": [
+      "Al cine",
+      "A la escultura",
+      "A la escritura"
+    ],
+    "correctAnswer": 0,
+    "id": "1754871336426"
+  },
+  {
+    "question": "Un animal que tiene columna vertebral, pelo y amamanta a sus crías, ¿qué tipo de vertebrado es?",
+    "options": [
+      "Ovíparo",
+      "Invertebrado",
+      "Mamífero"
+    ],
+    "correctAnswer": 2,
+    "id": "1754871661528"
+  },
+  {
+    "question": "¿Qué significa la 'www' al inicio de las páginas web?",
+    "options": [
+      "Web Wide World",
+      "World Wide Web",
+      "Ninguna de las anteriores"
+    ],
+    "correctAnswer": 1,
+    "id": "1754871899426"
+  },
+  {
+    "question": "¿Cómo se llama cuando un lanzador tira tres strikes seguidos a un bateador?",
+    "options": [
+      "Outs",
+      "Home run",
+      "Ponche"
+    ],
+    "correctAnswer": 2,
+    "id": "1754872138042"
+  },
+  {
+    "question": "¿Qué atleta jamaiquino es el más rápido del mundo en 100 metros?",
+    "options": [
+      "Jesse Owens",
+      "Usain Bolt",
+      "Carl Lewis"
+    ],
+    "correctAnswer": 1,
+    "id": "1754872275045"
+  },
+  {
+    "question": "¿Cómo se dice \"Pulpo\" en inglés?",
+    "options": [
+      "Octopus",
+      "Spider",
+      "Bat"
+    ],
+    "correctAnswer": 0,
+    "id": "1754872432071"
+  },
+  {
+    "question": "¿Qué pasa cuando un jugador recibe dos tarjetas amarillas en un mismo partido de fútbol?",
+    "options": [
+      "Lo expulsan del equipo",
+      "Le dan una segunda oportunidad",
+      "Lo expulsan del partido"
+    ],
+    "correctAnswer": 2,
+    "id": "1754872602415"
   }
 ]

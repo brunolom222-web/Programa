@@ -1,25 +1,31 @@
 /* Estilos generales - Diseño moderno */
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+   
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    color: #2d3436;
+    color: #2d343648;
     display: flex;
     justify-content: center;
     align-items: center;
+    
+
 }
 
 .container {
     width: 90%;
     max-width: 900px;
     margin: 2rem auto;
-    background: white;
+    background-color: #e4e8eb;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.172);
     overflow: hidden;
     animation: fadeIn 0.6s ease-out;
+
+
+
 }
 
 @keyframes fadeIn {
@@ -168,7 +174,7 @@ body {
     font-weight: 600;
     font-size: 1.1rem;
     color: #6c5ce7;
-    padding: 0.8rem 1.2rem;
+    padding: 10px;
     background: white;
     border-radius: 50px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
@@ -286,6 +292,12 @@ body {
     border-radius: 3px;
 }
 
+.name {
+    flex-grow: 1; /* Hace que el nombre ocupe todo el espacio disponible */
+    text-align: left; /* Alineación izquierda explícita */
+    padding: 0 10px;
+}
+
 .ranking-section ol {
     padding-left: 0;
     list-style: none;
@@ -330,6 +342,7 @@ body {
     color: #00b894;
     min-width: 70px;
     text-align: right;
+
 }
 
 /* Tabla de respuestas - Diseño profesional */
@@ -342,7 +355,7 @@ body {
 }
 
 .answers-history h3 {
-    color: #2d3436;
+    color: #000000e9;
     margin-top: 0;
     margin-bottom: 1.5rem;
     font-size: 1.3rem;
@@ -424,11 +437,15 @@ body {
     
     .question-text {
         font-size: 1.2rem;
-        padding: 1rem;
+        padding: 30px;
     }
     
     .answer-btn {
-        padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    /* Resto de tus estilos de botones */
     }
     
     .answers-history table {
@@ -462,4 +479,33 @@ body {
         padding: 0.8rem;
         font-size: 0.85rem;
     }
+
+    .container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+body {
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+#gameScreen {
+    position: relative;
+    margin: 20px auto;
+    max-width: 800px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#questionContainer {
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+
+
 }

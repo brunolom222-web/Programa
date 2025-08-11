@@ -14,6 +14,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let playerId = null;
     let currentQuestionIndex = 0; // <--- AÑADIDO para control individual
 
+    // IMAGENES
+   const categoryBackgrounds = {
+    "geografia": "url('/img/geografia.jpeg')",
+    "arte": "url('/img/arte.jpeg')",
+    "astronomia": "url('/img/astronomia.jpeg')", // Ejemplo con categoría existente
+    "biologia": "url('/img/biologia.jpeg')",
+    "tecnologia": "url('/img/tecnologia.jpeg')",
+    "matematicas": "url('/img/matematica.jpeg')",
+    "deportes": "url('/img/deporte.jpeg')",
+    "adivinanza": "url('/img/adivinanza.jpeg')",
+    "curiosidades": "url('/img/curiosidades.jpeg')" // Imagen genérica
+};
+
     // 1. Configuración inicial
     gameScreen.style.display = 'none';
 
@@ -53,9 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
         timeLeft.textContent = data.timeLeft;
     });
 
+    // Modifica el evento newQuestion:
     socket.on('newQuestion', (data) => {
         displayQuestion(data.question);
         timeLeft.textContent = data.timeLeft;
+        // Cambia el fondo según la categoría
     });
 
     socket.on('timeUpdate', (time) => {
@@ -74,64 +89,98 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 4. Mostrar pregunta y opciones (MODIFICADO)
-    function displayQuestion(questionData) {
-        const questionContainer = document.getElementById('questionContainer');
-        const optionsContainer = document.getElementById('optionsContainer');
-        
-        questionContainer.innerHTML = `<h3>${questionData.question}</h3>`;
-        optionsContainer.innerHTML = '';
-        
-        questionData.options.forEach((option, index) => {
-            const button = document.createElement('button');
-            button.className = 'answer-btn';
-            button.textContent = option;
-            
-            button.addEventListener('click', () => {
-                // Deshabilitar todos los botones
-                const allButtons = optionsContainer.querySelectorAll('button');
-                allButtons.forEach(btn => {
-                    btn.disabled = true;
-                    btn.style.opacity = '0.7';
-                });
-                
-                // Resaltar selección
-                button.style.border = '3px solid #FFD700';
-                button.style.fontWeight = 'bold';
-                
-                socket.emit('submitAnswer', { answerIndex: index }, (response) => {
-                    if (response.success) {
-                        // Feedback visual
-                        if (response.isCorrect) {
-                            button.style.backgroundColor = '#4CAF50';
-                            button.style.color = 'white';
-                            button.innerHTML = `✓ ${option}`;
-                        } else {
-                            button.style.backgroundColor = '#f44336';
-                            button.style.color = 'white';
-                            button.innerHTML = `✗ ${option}`;
-                            
-                            // Mostrar respuesta correcta
-                            const correctBtn = optionsContainer.children[response.correctAnswerIndex];
-                            correctBtn.style.backgroundColor = '#4CAF50';
-                            correctBtn.style.color = 'white';
-                            correctBtn.innerHTML = `✓ ${correctBtn.textContent}`;
-                        }
+function displayQuestion(questionData) {
+    const gameContainer = document.getElementById('gameScreen');
+    const questionContainer = document.getElementById('questionContainer');
+    const optionsContainer = document.getElementById('optionsContainer');
 
-                        // Avanzar después de 1.5 segundos (MODIFICADO)
-                        setTimeout(() => {
-                            socket.emit('requestNextQuestion'); // <--- AÑADIDO
-                        }, 1500);
-                    } else {
-                        alert(response.error || 'Error al enviar respuesta');
-                        button.disabled = false;
-                        button.style.opacity = '1';
-                    }
-                });
+    // Aplicar fondo al contenedor principal del juego
+    gameContainer.style.backgroundImage = categoryBackgrounds[questionData.category] || "url('/img/default.jpeg')";
+    gameContainer.style.backgroundSize = "cover";
+    gameContainer.style.backgroundPosition = "center";
+    gameContainer.style.backgroundRepeat = "no-repeat";
+    gameContainer.style.padding = "25px";
+    gameContainer.style.borderRadius = "15px";
+    gameContainer.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.3)";
+    gameContainer.style.position = "relative";
+
+    // Capa para mejorar legibilidad (opcional)
+    gameContainer.style.setProperty('--before-opacity', '0.6'); // Control fácil de opacidad
+    
+    // Contenido de la pregunta (manteniendo legibilidad)
+    questionContainer.style.backgroundColor = "rgba(255, 255, 255, 0.68)";
+    questionContainer.style.padding = "30px";
+    questionContainer.style.borderRadius = "10px";
+    questionContainer.style.color = "rgba(0, 0, 0, 1) ";
+    questionContainer.style.textAlign = "center";
+    questionContainer.style.textShadow = "1px 1px 3px rgba(0, 0, 0, 0)";
+    questionContainer.style.marginBottom = "20px";
+    questionContainer.innerHTML = `<h3 style="margin: 0;">${questionData.question}</h3>`;
+
+    // Opciones de respuesta
+    optionsContainer.innerHTML = '';
+    questionData.options.forEach((option, index) => {
+        const button = document.createElement('button');
+        button.className = 'answer-btn';
+        button.textContent = option;
+        button.style.display = "block";
+        button.style.width = "100%";
+        button.style.marginBottom = "12px";
+        button.style.padding = "12px";
+        button.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
+        button.style.border = "none";
+        button.style.borderRadius = "8px";
+        button.style.cursor = "pointer";
+        button.style.transition = "all 0.3s";
+        button.style.fontSize = "16px";
+        button.style.textAlign = "left";
+
+        button.addEventListener('click', () => {
+            // Deshabilitar todos los botones
+            const allButtons = optionsContainer.querySelectorAll('button');
+            allButtons.forEach(btn => {
+                btn.disabled = true;
+                btn.style.opacity = '0.7';
             });
             
-            optionsContainer.appendChild(button);
+            // Resaltar selección
+            button.style.border = '3px solid #FFD700';
+            button.style.fontWeight = 'bold';
+            
+            socket.emit('submitAnswer', { answerIndex: index }, (response) => {
+                if (response.success) {
+                    // Feedback visual
+                    if (response.isCorrect) {
+                        button.style.backgroundColor = '#4CAF50';
+                        button.style.color = 'white';
+                        button.innerHTML = `✓ ${option}`;
+                    } else {
+                        button.style.backgroundColor = '#f44336';
+                        button.style.color = 'white';
+                        button.innerHTML = `✗ ${option}`;
+                        
+                        // Mostrar respuesta correcta
+                        const correctBtn = optionsContainer.children[response.correctAnswerIndex];
+                        correctBtn.style.backgroundColor = '#4CAF50';
+                        correctBtn.style.color = 'white';
+                        correctBtn.innerHTML = `✓ ${correctBtn.textContent}`;
+                    }
+
+                    // Avanzar después de 1.5 segundos
+                    setTimeout(() => {
+                        socket.emit('requestNextQuestion');
+                    }, 1500);
+                } else {
+                    alert(response.error || 'Error al enviar respuesta');
+                    button.disabled = false;
+                    button.style.opacity = '1';
+                }
+            });
         });
-    }
+        
+        optionsContainer.appendChild(button);
+    });
+}
 
     // 5. Mostrar resultados finales (ya estaba correcto)
    function showFinalResults(data) {
