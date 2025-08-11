@@ -11,6 +11,9 @@ const io = socketIO(server, {
     origin: "*",
     methods: ["GET", "POST"]
   }
+
+
+
 });
 
 // Configuración
@@ -56,20 +59,14 @@ function saveQuestions() {
 }
 
 // Middleware
-// Configuración de archivos estáticos (¡ESSENCIAL PARA RENDER!)
-app.use(express.static(path.join(__dirname, 'Frontend'))); // Para player.html
-app.use('/css', express.static(path.join(__dirname, 'Frontend', 'css'))); // Para CSS
-app.use('/js', express.static(path.join(__dirname, 'Frontend', 'js'))); // Para JS
+app.use(express.static(path.join(__dirname, 'Frontend')));
+app.use('/css', express.static(path.join(__dirname, 'Frontend', 'css')));
+app.use('/js', express.static(path.join(__dirname, 'Frontend', 'js')));
+app.use('/img', express.static(path.join(__dirname, 'Frontend', 'img')));
 
 // Rutas
 app.get('/', (req, res) => {
   res.redirect('/player');
-});
-
-// Ruta para admin (si existe)
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Frontend', 'player.html'));
 });
 
 app.get('/player', (req, res) => {
@@ -80,9 +77,6 @@ app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'Frontend', 'admin.html'));
 });
 
-
-
-// Health check para Render
 app.get('/health', (req, res) => {
   res.status(200).json({
     status: 'OK',
@@ -96,53 +90,50 @@ app.get('/health', (req, res) => {
 io.on('connection', (socket) => {
   console.log(`🔌 [${new Date().toLocaleTimeString()}] Cliente conectado: ${socket.id}`);
 
-// Registrar ADMIN
-socket.on('iamadmin', () => {
+  // Registrar ADMIN
+  socket.on('iamadmin', () => {
     try {
-        players[socket.id] = {
-            id: socket.id,
-            name: `Admin-${socket.id.substr(0, 4)}`,
-            isAdmin: true,
-            connected: true,
-            answers: []
-        };
+      players[socket.id] = {
+        id: socket.id,
+        name: `Admin-${socket.id.substr(0, 4)}`,
+        isAdmin: true,
+        connected: true,
+        answers: []
+      };
 
-        socket.join('admins');
-        console.log(`👑 [${new Date().toLocaleTimeString()}] Admin registrado: ${socket.id}`);
-        
-        // Enviar datos iniciales al admin
+      socket.join('admins');
+      console.log(`👑 [${new Date().toLocaleTimeString()}] Admin registrado: ${socket.id}`);
+      
+      socket.emit('initData', {
+        players: Object.values(players),
+        questions: questions
+      });
+
+      socket.emit('adminConfirmed');
+
+      socket.on('requestQuestionsUpdate', () => {
         socket.emit('initData', {
-            players: Object.values(players),
-            questions: questions
+          players: Object.values(players),
+          questions: questions
         });
-
-        socket.emit('adminConfirmed');
-
-        // Manejar solicitudes de actualización
-        socket.on('requestQuestionsUpdate', () => {
-            socket.emit('initData', {
-                players: Object.values(players),
-                questions: questions
-            });
-        });
+      });
 
     } catch (error) {
-        console.error('❌ Error registrando admin:', error);
-        socket.emit('adminError', error.message);
+      console.error('❌ Error registrando admin:', error);
+      socket.emit('adminError', error.message);
     }
-});
+  });
 
-// Manejar eliminación de preguntas
-socket.on('deleteQuestion', (questionId) => {
+  socket.on('deleteQuestion', (questionId) => {
     try {
-        questions = questions.filter(q => q.id !== questionId);
-        saveQuestions();
-        io.to('admins').emit('questionDeleted');
-        console.log(`🗑️ [${new Date().toLocaleTimeString()}] Pregunta eliminada: ${questionId}`);
+      questions = questions.filter(q => q.id !== questionId);
+      saveQuestions();
+      io.to('admins').emit('questionDeleted');
+      console.log(`🗑️ [${new Date().toLocaleTimeString()}] Pregunta eliminada: ${questionId}`);
     } catch (error) {
-        console.error('❌ Error eliminando pregunta:', error);
+      console.error('❌ Error eliminando pregunta:', error);
     }
-});
+  });
 
   // Registrar JUGADOR
   socket.on('registerPlayer', (playerName, callback) => {
@@ -174,12 +165,6 @@ socket.on('deleteQuestion', (questionId) => {
         hasAnswered: false,
         lastResponseTime: 0,
         answers: []
-      };
-
-      playerProgress[socket.id] = {
-        currentQuestion: 0,
-        timer: null,
-        timeLeft: QUESTION_TIME
       };
 
       console.log(`🎮 [${new Date().toLocaleTimeString()}] Jugador registrado: ${playerName}`);
@@ -232,7 +217,7 @@ socket.on('deleteQuestion', (questionId) => {
   });
 
   // Iniciar juego (admin)
-  socket.on('startGame', (callback) => {
+socket.on('startGame', (callback) => {
     try {
       if (!players[socket.id]?.isAdmin) {
         throw new Error('No autorizado');
@@ -255,27 +240,25 @@ socket.on('deleteQuestion', (questionId) => {
 
       Object.keys(players).forEach(playerId => {
         if (!players[playerId].isAdmin) {
+          const shuffledQuestions = [...questions].sort(() => Math.random() - 0.5);
           playerProgress[playerId] = {
             currentQuestion: 0,
             timer: null,
-            timeLeft: QUESTION_TIME
+            timeLeft: QUESTION_TIME,
+            questionOrder: shuffledQuestions.map(q => q.id)
           };
           startPlayerTimer(playerId);
+          
+          const firstQuestionId = playerProgress[playerId].questionOrder[0];
+          const firstQuestion = questions.find(q => q.id === firstQuestionId);
+          io.to(playerId).emit('newQuestion', {
+            question: firstQuestion,
+            category: firstQuestion.category || 'default', // ← Añade categoría
+            questionNumber: 1,
+            totalQuestions: questions.length,
+            timeLeft: QUESTION_TIME
+          });
         }
-      });
-
-      Object.values(players).forEach(player => {
-        player.score = 0;
-        player.hasAnswered = false;
-        player.lastResponseTime = 0;
-        player.answers = [];
-      });
-
-      io.emit('gameStarted', {
-        question: questions[0],
-        questionNumber: 1,
-        totalQuestions: questions.length,
-        timeLeft: QUESTION_TIME
       });
 
       callback({ success: true });
@@ -285,7 +268,7 @@ socket.on('deleteQuestion', (questionId) => {
       console.error('❌ Error al iniciar juego:', error.message);
       callback({ success: false, error: error.message });
     }
-  });
+});
 
   // Respuesta de jugador
   socket.on('submitAnswer', ({ answerIndex }, callback) => {
@@ -307,8 +290,8 @@ socket.on('deleteQuestion', (questionId) => {
         throw new Error('Ya respondiste esta pregunta');
       }
 
-      const currentQIndex = playerProgress[socket.id].currentQuestion;
-      const currentQ = questions[currentQIndex];
+      const currentQId = playerProgress[socket.id].questionOrder[playerProgress[socket.id].currentQuestion];
+      const currentQ = questions.find(q => q.id === currentQId);
       const isCorrect = parseInt(answerIndex) === currentQ.correctAnswer;
       const responseTime = QUESTION_TIME - playerProgress[socket.id].timeLeft;
 
@@ -370,11 +353,17 @@ socket.on('deleteQuestion', (questionId) => {
     player.hasAnswered = false;
     
     if (playerProgress[playerId].currentQuestion < questions.length) {
+      // Obtener siguiente pregunta según el orden aleatorio del jugador
+      const nextQuestionId = playerProgress[playerId].questionOrder[playerProgress[playerId].currentQuestion];
+      const nextQuestion = questions.find(q => q.id === nextQuestionId);
+      
       io.to(playerId).emit('newQuestion', {
-        question: questions[playerProgress[playerId].currentQuestion],
-        questionNumber: playerProgress[playerId].currentQuestion + 1,
-        timeLeft: QUESTION_TIME
-      });
+  question: nextQuestion,
+  category: nextQuestion.category || 'default', // ← Añade categoría
+  questionNumber: playerProgress[playerId].currentQuestion + 1,
+  totalQuestions: questions.length,
+  timeLeft: QUESTION_TIME
+});
       startPlayerTimer(playerId);
     } else {
       playerFinished(playerId);
@@ -450,12 +439,7 @@ function endGame() {
 
 const PORT = process.env.PORT || 3000;
 
-server.listen(PORT, () => {  // <-- Solo usa PORT, sin HOST
-  questions = loadQuestions();
-  console.log(`
-  🚀 Servidor listo en puerto ${PORT}
-  `);
-
+server.listen(PORT, () => {
   questions = loadQuestions();
   console.log(`
   🚀 Servidor listo en puerto ${PORT}
