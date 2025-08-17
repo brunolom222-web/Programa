@@ -3,6 +3,7 @@ const express = require('express');
 const socketIO = require('socket.io');
 const fs = require('fs');
 const path = require('path');
+const multer = require('multer');
 
 const app = express();
 const server = require('http').createServer(app);
@@ -11,16 +12,32 @@ const io = socketIO(server, {
     origin: "*",
     methods: ["GET", "POST"]
   }
-
-
-
 });
 
 // Configuración
 const QUESTIONS_FILE = path.join(__dirname, 'questions.json');
+const UPLOADS_DIR = path.join(__dirname, 'Frontend', 'uploads');
 const MAX_PLAYERS = 10;
 const QUESTION_TIME = 15; // segundos
 const TIME_BONUS = 3; // puntos extra por velocidad
+
+// Configuración de Multer para imágenes
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    if (!fs.existsSync(UPLOADS_DIR)) {
+      fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+    }
+    cb(null, UPLOADS_DIR);
+  },
+  filename: (req, file, cb) => {
+    cb(null, `img-${Date.now()}${path.extname(file.originalname)}`);
+  }
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 2 * 1024 * 1024 } // 2MB
+});
 
 // Datos del juego
 let questions = [];
@@ -63,6 +80,7 @@ app.use(express.static(path.join(__dirname, 'Frontend')));
 app.use('/css', express.static(path.join(__dirname, 'Frontend', 'css')));
 app.use('/js', express.static(path.join(__dirname, 'Frontend', 'js')));
 app.use('/img', express.static(path.join(__dirname, 'Frontend', 'img')));
+app.use('/uploads', express.static(UPLOADS_DIR));
 
 // Rutas
 app.get('/', (req, res) => {
@@ -84,6 +102,32 @@ app.get('/health', (req, res) => {
     players: Object.keys(players).length,
     questions: questions.length
   });
+});
+
+// Ruta para subir preguntas con imágenes
+app.post('/api/questions-with-image', upload.single('image'), (req, res) => {
+  try {
+    const questionData = JSON.parse(req.body.questionData);
+    const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
+
+    const newQuestion = {
+      question: questionData.question.trim(),
+      options: questionData.options.map(opt => opt.trim()),
+      correctAnswer: parseInt(questionData.correctAnswer),
+      category: questionData.category || 'general',
+      image: imagePath,
+      id: Date.now().toString()
+    };
+
+    questions.push(newQuestion);
+    saveQuestions();
+
+    io.to('admins').emit('questionAdded', newQuestion);
+    res.json({ success: true, question: newQuestion });
+  } catch (error) {
+    console.error('Error al añadir pregunta con imagen:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
 });
 
 // Socket.IO
@@ -189,7 +233,7 @@ io.on('connection', (socket) => {
         throw new Error('No tienes permisos de administrador');
       }
 
-      const { question, options, correctAnswer } = questionData;
+      const { question, options, correctAnswer, category } = questionData;
       
       if (!question?.trim() || !options || options.length !== 3 || isNaN(correctAnswer)) {
         throw new Error('Datos de pregunta incompletos');
@@ -199,7 +243,9 @@ io.on('connection', (socket) => {
         question: question.trim(),
         options: options.map(opt => opt.trim()),
         correctAnswer: parseInt(correctAnswer),
-        id: Date.now().toString()
+        id: Date.now().toString(),
+        category: category || 'general',
+        image: questionData.image || null
       };
 
       questions.push(newQuestion);
@@ -217,7 +263,7 @@ io.on('connection', (socket) => {
   });
 
   // Iniciar juego (admin)
-socket.on('startGame', (callback) => {
+  socket.on('startGame', (callback) => {
     try {
       if (!players[socket.id]?.isAdmin) {
         throw new Error('No autorizado');
@@ -253,7 +299,7 @@ socket.on('startGame', (callback) => {
           const firstQuestion = questions.find(q => q.id === firstQuestionId);
           io.to(playerId).emit('newQuestion', {
             question: firstQuestion,
-            category: firstQuestion.category || 'default', // ← Añade categoría
+            category: firstQuestion.category || 'default',
             questionNumber: 1,
             totalQuestions: questions.length,
             timeLeft: QUESTION_TIME
@@ -268,7 +314,7 @@ socket.on('startGame', (callback) => {
       console.error('❌ Error al iniciar juego:', error.message);
       callback({ success: false, error: error.message });
     }
-});
+  });
 
   // Respuesta de jugador
   socket.on('submitAnswer', ({ answerIndex }, callback) => {
@@ -353,17 +399,16 @@ socket.on('startGame', (callback) => {
     player.hasAnswered = false;
     
     if (playerProgress[playerId].currentQuestion < questions.length) {
-      // Obtener siguiente pregunta según el orden aleatorio del jugador
       const nextQuestionId = playerProgress[playerId].questionOrder[playerProgress[playerId].currentQuestion];
       const nextQuestion = questions.find(q => q.id === nextQuestionId);
       
       io.to(playerId).emit('newQuestion', {
-  question: nextQuestion,
-  category: nextQuestion.category || 'default', // ← Añade categoría
-  questionNumber: playerProgress[playerId].currentQuestion + 1,
-  totalQuestions: questions.length,
-  timeLeft: QUESTION_TIME
-});
+        question: nextQuestion,
+        category: nextQuestion.category || 'default',
+        questionNumber: playerProgress[playerId].currentQuestion + 1,
+        totalQuestions: questions.length,
+        timeLeft: QUESTION_TIME
+      });
       startPlayerTimer(playerId);
     } else {
       playerFinished(playerId);

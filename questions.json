@@ -238,7 +238,8 @@
       "Hojas"
     ],
     "correctAnswer": 1,
-    "id": "1754867992056"
+    "id": "1754867992056",
+    "category": "biologia"
   },
   {
     "question": "¿Cuál es el lago más grande de Venezuela?",
@@ -248,7 +249,8 @@
       "Lago de Maracaibo"
     ],
     "correctAnswer": 2,
-    "id": "1754868175253"
+    "id": "1754868175253",
+    "category": "geografia"
   },
   {
     "question": "¿Qué gas necesitan las plantas para la fotosíntesis?",
@@ -258,7 +260,8 @@
       "C₂O"
     ],
     "correctAnswer": 1,
-    "id": "1754868315866"
+    "id": "1754868315866",
+    "category": "biologia"
   },
   {
     "question": "¿Qué elemento químico tiene símbolo \"Au\"?",
@@ -268,7 +271,8 @@
       "Oro"
     ],
     "correctAnswer": 2,
-    "id": "1754868563700"
+    "id": "1754868563700",
+    "category": "biologia"
   },
   {
     "question": "¿Qué arte antiguo se hace doblando papel?",
@@ -278,7 +282,8 @@
       "Ninguna de las anteriores"
     ],
     "correctAnswer": 0,
-    "id": "1754868799441"
+    "id": "1754868799441",
+    "category": "arte"
   },
   {
     "question": "¿Cuánto es ½ + ½?",
@@ -288,7 +293,8 @@
       "4"
     ],
     "correctAnswer": 1,
-    "id": "1754869310738"
+    "id": "1754869310738",
+    "category": "matematicas"
   },
   {
     "question": "¿Qué pesa más: 1 kg de hierro o 1 kg de algodón?",
@@ -298,7 +304,8 @@
       "Ninguna de las anteriores"
     ],
     "correctAnswer": 2,
-    "id": "1754869513156"
+    "id": "1754869513156",
+    "category": "curiosidades"
   },
   {
     "question": "¿Cuál es el sistema operativo más utilizado a nivel mundial?",
@@ -308,7 +315,8 @@
       "Windows"
     ],
     "correctAnswer": 2,
-    "id": "1754869600218"
+    "id": "1754869600218",
+    "category": "tecnologia"
   },
   {
     "question": "¿Qué enzima del cuerpo humano descompone la leche?",
@@ -318,17 +326,8 @@
       "Amilasa"
     ],
     "correctAnswer": 0,
-    "id": "1754869930519"
-  },
-  {
-    "question": "¿Cuál es el más largo del cuerpo?",
-    "options": [
-      "Humero",
-      "Fémur",
-      "Rotula"
-    ],
-    "correctAnswer": 1,
-    "id": "1754870078908"
+    "id": "1754869930519",
+    "category": "biologia"
   },
   {
     "question": "¿Qué enfermedad es causada por falta de insulina?",
@@ -338,7 +337,8 @@
       "Azúcar alta"
     ],
     "correctAnswer": 1,
-    "id": "1754870225843"
+    "id": "1754870225843",
+    "category": "biologia"
   },
   {
     "question": "¿Qué molécula almacena información genética?",
@@ -348,7 +348,8 @@
       "ADN"
     ],
     "correctAnswer": 2,
-    "id": "1754870316254"
+    "id": "1754870316254",
+    "category": "biologia"
   },
   {
     "question": "¿Qué órgano humano puede crecer de nuevo si se corta?",
@@ -358,7 +359,8 @@
       "Riñón"
     ],
     "correctAnswer": 0,
-    "id": "1754870422938"
+    "id": "1754870422938",
+    "category": "biologia"
   },
   {
     "question": "¿Qué líder indígena luchó contra los españoles en Venezuela?",
@@ -368,7 +370,8 @@
       "Simón Bolívar"
     ],
     "correctAnswer": 0,
-    "id": "1754870676055"
+    "id": "1754870676055",
+    "category": "geografia"
   },
   {
     "question": "¿Qué número es par?",
@@ -378,7 +381,8 @@
       "10"
     ],
     "correctAnswer": 2,
-    "id": "1754870749292"
+    "id": "1754870749292",
+    "category": "matematicas"
   },
   {
     "question": "¿Cuánto es 10-20?",
@@ -388,7 +392,8 @@
       "1"
     ],
     "correctAnswer": 1,
-    "id": "1754870840720"
+    "id": "1754870840720",
+    "category": "matematicas"
   },
   {
     "question": "¿Cuántos meses tienen 28 días?",
@@ -398,7 +403,8 @@
       "2"
     ],
     "correctAnswer": 0,
-    "id": "1754870903593"
+    "id": "1754870903593",
+    "category": "curiosidades"
   },
   {
     "question": "¿A qué se le denomina \"séptimo arte\"?",
@@ -408,7 +414,8 @@
       "A la escritura"
     ],
     "correctAnswer": 0,
-    "id": "1754871336426"
+    "id": "1754871336426",
+    "category": "arte"
   },
   {
     "question": "Un animal que tiene columna vertebral, pelo y amamanta a sus crías, ¿qué tipo de vertebrado es?",
@@ -418,7 +425,8 @@
       "Mamífero"
     ],
     "correctAnswer": 2,
-    "id": "1754871661528"
+    "id": "1754871661528",
+    "category": "biologia"
   },
   {
     "question": "¿Qué significa la 'www' al inicio de las páginas web?",
@@ -428,7 +436,8 @@
       "Ninguna de las anteriores"
     ],
     "correctAnswer": 1,
-    "id": "1754871899426"
+    "id": "1754871899426",
+    "category": "tecnologia"
   },
   {
     "question": "¿Cómo se llama cuando un lanzador tira tres strikes seguidos a un bateador?",
@@ -438,7 +447,8 @@
       "Ponche"
     ],
     "correctAnswer": 2,
-    "id": "1754872138042"
+    "id": "1754872138042",
+    "category": "deportes"
   },
   {
     "question": "¿Qué atleta jamaiquino es el más rápido del mundo en 100 metros?",
@@ -448,7 +458,8 @@
       "Carl Lewis"
     ],
     "correctAnswer": 1,
-    "id": "1754872275045"
+    "id": "1754872275045",
+    "category": "deportes"
   },
   {
     "question": "¿Cómo se dice \"Pulpo\" en inglés?",
@@ -458,7 +469,8 @@
       "Bat"
     ],
     "correctAnswer": 0,
-    "id": "1754872432071"
+    "id": "1754872432071",
+    "category": "entretenimiento"
   },
   {
     "question": "¿Qué pasa cuando un jugador recibe dos tarjetas amarillas en un mismo partido de fútbol?",
@@ -468,6 +480,556 @@
       "Lo expulsan del partido"
     ],
     "correctAnswer": 2,
-    "id": "1754872602415"
+    "id": "1754872602415",
+    "category": "deportes"
+  },
+  {
+    "question": "¿Cuál es el hueso más largo del cuerpo?",
+    "options": [
+      "Humero",
+      "Fémur",
+      "Rotula"
+    ],
+    "correctAnswer": 1,
+    "id": "1755441284259",
+    "category": "biologia"
+  },
+  {
+    "question": "¿Qué famoso muro separaba Alemania Oriental y Occidental?",
+    "options": [
+      "Muro de Berlín",
+      "La Gran Muralla China",
+      "Muro de Gorgan"
+    ],
+    "correctAnswer": 0,
+    "id": "1755441633266",
+    "category": "geografia"
+  },
+  {
+    "question": "¿Quién escribió Don Quijote de la Mancha?",
+    "options": [
+      "Miguel de Cervantes",
+      "Pablo Picasso",
+      "Leonardo da Vinci"
+    ],
+    "correctAnswer": 0,
+    "id": "1755441783021",
+    "category": "arte"
+  },
+  {
+    "question": "¿Cuál es el deporte más popular del mundo?",
+    "options": [
+      "Beisbol",
+      "Bascketball",
+      "Futbol"
+    ],
+    "correctAnswer": 0,
+    "id": "1755441859899",
+    "category": "deportes"
+  },
+  {
+    "question": "¿Quién es el creador de Facebook?",
+    "options": [
+      "Steve Jobs",
+      "Mark Zuckerberg",
+      "Bill Gates"
+    ],
+    "correctAnswer": 1,
+    "id": "1755441957142",
+    "category": "tecnologia"
+  },
+  {
+    "question": "¿Cuál es el idioma más hablado del mundo?",
+    "options": [
+      "Inglés",
+      "Español",
+      "Chino mandarín"
+    ],
+    "correctAnswer": 1,
+    "id": "1755442044752",
+    "category": "geografia"
+  },
+  {
+    "question": "¿Qué cantante es conocido como \"El Rey del Pop\"?",
+    "options": [
+      "Beyoncé",
+      "Justin Bieber",
+      "Michael Jackson"
+    ],
+    "correctAnswer": 2,
+    "id": "1755442241701",
+    "category": "entretenimiento"
+  },
+  {
+    "question": "¿Qué fruta tiene semillas por fuera?",
+    "options": [
+      "Guanabana",
+      "Fresa",
+      "Cambur"
+    ],
+    "correctAnswer": 1,
+    "id": "1755442491371",
+    "category": "biologia"
+  },
+  {
+    "question": "ADIVINANZA: Si hoy es lunes, ¿qué día será en 72 horas?",
+    "options": [
+      "Jueves",
+      "Martes",
+      "Miércoles"
+    ],
+    "correctAnswer": 0,
+    "id": "1755442630328",
+    "category": "adivinanza"
+  },
+  {
+    "question": "¿Qué película animada trata sobre un niño que viaja al Mundo de los Muertos?",
+    "options": [
+      "Coco",
+      "Lilo y Stitch",
+      "Shrek"
+    ],
+    "correctAnswer": 0,
+    "id": "1755442857228",
+    "category": "entretenimiento"
+  },
+  {
+    "question": "¿Qué juego de construcción con bloques es el más vendido de la historia?",
+    "options": [
+      "Roblox",
+      "League of Legends",
+      "Minecraft"
+    ],
+    "correctAnswer": 2,
+    "id": "1755443125795",
+    "category": "entretenimiento"
+  },
+  {
+    "question": "¿Qué ave puede imitar sonidos humanos?",
+    "options": [
+      "Perro",
+      "Loro",
+      "Gallina"
+    ],
+    "correctAnswer": 1,
+    "id": "1755443258965",
+    "category": "biologia"
+  },
+  {
+    "question": "¿Qué alimento nunca se echa a perder?",
+    "options": [
+      "Pan",
+      "Miel",
+      "Jarabe"
+    ],
+    "correctAnswer": 1,
+    "id": "1755443372034",
+    "category": "curiosidades"
+  },
+  {
+    "question": "Imagen de un semáforo: ¿Qué color está en el medio?",
+    "options": [
+      "Amarillo",
+      "Verde",
+      "Rojo"
+    ],
+    "correctAnswer": 0,
+    "id": "1755443426323",
+    "category": "curiosidades"
+  },
+  {
+    "question": "¿Cuántos lados tiene un heptágono?",
+    "options": [
+      "7",
+      "10",
+      "9"
+    ],
+    "correctAnswer": 0,
+    "id": "1755443493738",
+    "category": "matematicas"
+  },
+  {
+    "question": "¿Qué serie es esta?",
+    "options": [
+      "Los Minions",
+      "Los Simpsons",
+      "One Piece"
+    ],
+    "correctAnswer": 1,
+    "category": "entretenimiento",
+    "image": "/uploads/img-1755447684748.jpeg",
+    "id": "1755447684879"
+  },
+  {
+    "question": "¿A qué país pertenece esta bandera?",
+    "options": [
+      "China",
+      "Corea del norte",
+      "Japón"
+    ],
+    "correctAnswer": 2,
+    "category": "geografia",
+    "image": "/uploads/img-1755448426892.jpeg",
+    "id": "1755448426895"
+  },
+  {
+    "question": "¿Qué país tiene forma de bota?",
+    "options": [
+      "Perú",
+      "Italia",
+      "Chile"
+    ],
+    "correctAnswer": 1,
+    "category": "geografia",
+    "image": "/uploads/img-1755449649436.jpeg",
+    "id": "1755449649442"
+  },
+  {
+    "question": "¿Qué instrumento musical tiene cuerdas y se toca con arco?",
+    "options": [
+      "Violin",
+      "Arpa",
+      "Guitarra"
+    ],
+    "correctAnswer": 0,
+    "id": "1755449730711",
+    "category": "arte",
+    "image": null
+  },
+  {
+    "question": "¿Qué dispositivo almacena datos permanentemente en una computadora?",
+    "options": [
+      "Procesador",
+      "RAM",
+      "Disco duro"
+    ],
+    "correctAnswer": 2,
+    "category": "tecnologia",
+    "image": "/uploads/img-1755450003174.jpeg",
+    "id": "1755450003177"
+  },
+  {
+    "question": "ADIVINANZA: \"Blanco por dentro, verde por fuera. Si no lo adivinas, espera.\"",
+    "options": [
+      "La manzana",
+      "La pera",
+      "El platano"
+    ],
+    "correctAnswer": 1,
+    "id": "1755450110749",
+    "category": "adivinanza",
+    "image": null
+  },
+  {
+    "question": "ADIVINANZA: \"Tengo agujas y no sé coser, tengo números y no sé leer.\"",
+    "options": [
+      "El reloj",
+      "La brújula",
+      "La calculadora"
+    ],
+    "correctAnswer": 0,
+    "id": "1755450189523",
+    "category": "adivinanza",
+    "image": null
+  },
+  {
+    "question": "¿Qué planeta del sistema solar tiene anillos?",
+    "options": [
+      "Saturno",
+      "Jupiter",
+      "Urano"
+    ],
+    "correctAnswer": 0,
+    "category": "astronomia",
+    "image": "/uploads/img-1755450332316.jpeg",
+    "id": "1755450332318"
+  },
+  {
+    "question": "¿Qué plataforma es famosa por videos de \"streamers\" jugando?",
+    "options": [
+      "Twitch",
+      "YouTube",
+      "Netflix"
+    ],
+    "correctAnswer": 0,
+    "id": "1755450534655",
+    "category": "adivinanza",
+    "image": null
+  },
+  {
+    "question": "¿Qué es un año luz?",
+    "options": [
+      "Tiempo que tarda la Tierra en girar",
+      "La edad de una estrella",
+      "Distancia que recorre la luz en un año"
+    ],
+    "correctAnswer": 2,
+    "id": "1755450607352",
+    "category": "astronomia",
+    "image": null
+  },
+  {
+    "question": "¿Qué estrella es la más cercana a la Tierra?",
+    "options": [
+      "Sirio",
+      "Alfa Centauri",
+      "El Sol"
+    ],
+    "correctAnswer": 2,
+    "category": "astronomia",
+    "image": "/uploads/img-1755450708472.jpeg",
+    "id": "1755450708474"
+  },
+  {
+    "question": "¿Qué famoso científico formuló la teoría de la relatividad?",
+    "options": [
+      "Isaac Newton",
+      "Albert Einstein",
+      "Stephen Hawking"
+    ],
+    "correctAnswer": 1,
+    "category": "astronomia",
+    "image": "/uploads/img-1755450830843.jpeg",
+    "id": "1755450830850"
+  },
+  {
+    "question": "¿A cuánto equivale un siglo?",
+    "options": [
+      "100 años",
+      "10 años",
+      "1000 años"
+    ],
+    "correctAnswer": 0,
+    "id": "1755451303837",
+    "category": "curiosidades",
+    "image": null
+  },
+  {
+    "question": "¿A qué temperatura se congela el agua?",
+    "options": [
+      "-10°C",
+      "-0°C",
+      "0°C"
+    ],
+    "correctAnswer": 2,
+    "id": "1755451455569",
+    "category": "biologia",
+    "image": null
+  },
+  {
+    "question": "¿Cuántas sílabas tiene la palabra abecedario?",
+    "options": [
+      "6 sílabas",
+      "5 sílabas",
+      "No tiene sílabas"
+    ],
+    "correctAnswer": 1,
+    "category": "adivinanza",
+    "image": "/uploads/img-1755451662506.jpeg",
+    "id": "1755451663499"
+  },
+  {
+    "question": "¿Qué quiere decir que una palabra sea esdrújula?",
+    "options": [
+      "Que la sílaba tónica es la antepenúltima",
+      "Que la sílaba tónica es la última",
+      "Que la sílaba tónica es la penúltima"
+    ],
+    "correctAnswer": 0,
+    "id": "1755451907883",
+    "category": "adivinanza",
+    "image": null
+  },
+  {
+    "question": "Si en una carrera adelanto al que va segundo… ¿en qué posición estaba antes y en cuál estoy ahora?",
+    "options": [
+      "Estaba de 3er y pasé a ser el 1ero",
+      "Estaba de 4to y pasé a ser el 1ero",
+      "Estaba de 3ero y pasé a ser el 2do"
+    ],
+    "correctAnswer": 2,
+    "id": "1755452157847",
+    "category": "curiosidades",
+    "image": null
+  },
+  {
+    "question": "¿En qué país se encuentra la Torre de Pisa?",
+    "options": [
+      "Estados Unidos",
+      "Italia",
+      "Europa"
+    ],
+    "correctAnswer": 1,
+    "category": "geografia",
+    "image": "/uploads/img-1755452504123.jpeg",
+    "id": "1755452504720"
+  },
+  {
+    "question": "¿Qué juego está formado por peones, alfiles, reyes y reinas?",
+    "options": [
+      "Parchís",
+      "El ajedrez",
+      "Damas"
+    ],
+    "correctAnswer": 1,
+    "id": "1755452901061",
+    "category": "arte",
+    "image": null
+  },
+  {
+    "question": "¿Cómo se llama el proceso mediante el cual una oruga se convierte en mariposa?",
+    "options": [
+      "Fotosíntesis",
+      "Cetosis",
+      "Metamorfosis"
+    ],
+    "correctAnswer": 2,
+    "category": "biologia",
+    "image": "/uploads/img-1755453083559.jpg",
+    "id": "1755453083588"
+  },
+  {
+    "question": "¿Cuál es la capital de Australia?",
+    "options": [
+      "Sídney",
+      "Canberra",
+      "Melbourne"
+    ],
+    "correctAnswer": 1,
+    "id": "1755453248843",
+    "category": "geografia",
+    "image": null
+  },
+  {
+    "question": "¿Qué animal es este?",
+    "options": [
+      "Ñandú",
+      "Llama",
+      "Alpaca"
+    ],
+    "correctAnswer": 1,
+    "category": "biologia",
+    "image": "/uploads/img-1755453658082.jpg",
+    "id": "1755453658111"
+  },
+  {
+    "question": "¿Cuántos pares de patas tiene una araña?",
+    "options": [
+      "4 pares",
+      "8 pares",
+      "3 pares"
+    ],
+    "correctAnswer": 0,
+    "id": "1755454264073",
+    "category": "biologia",
+    "image": null
+  },
+  {
+    "question": "¿De dónde se extrae el papel?",
+    "options": [
+      "De la madera de los arboles",
+      "De las hojas de los arboles",
+      "Del plástico"
+    ],
+    "correctAnswer": 0,
+    "id": "1755454500204",
+    "category": "biologia",
+    "image": null
+  },
+  {
+    "question": "¿Por dónde sale el sol?",
+    "options": [
+      "Norte",
+      "Oeste",
+      "Este"
+    ],
+    "correctAnswer": 2,
+    "id": "1755454584603",
+    "category": "geografia",
+    "image": null
+  },
+  {
+    "question": "¿Por qué un T-Rex no puede aplaudir?",
+    "options": [
+      "Tiene brazos muy pequeños",
+      "No existe",
+      "Ninguna de las anteriores"
+    ],
+    "correctAnswer": 1,
+    "category": "adivinanza",
+    "image": "/uploads/img-1755454966166.jpeg",
+    "id": "1755454966167"
+  },
+  {
+    "question": "¿Cuántos minutos tiene una hora?",
+    "options": [
+      "360 minutos",
+      "24 minutos",
+      "60 minutos"
+    ],
+    "correctAnswer": 2,
+    "id": "1755455042448",
+    "category": "biologia",
+    "image": null
+  },
+  {
+    "question": "¿Cuántos cuartos de kilo hay en un kilo?",
+    "options": [
+      "En un kilo hay 4 cuartos de kilo",
+      "En un kilo hay 5 cuartos de kilo.",
+      "En un kilo no hay cuartos de kilo"
+    ],
+    "correctAnswer": 0,
+    "id": "1755455139767",
+    "category": "adivinanza",
+    "image": null
+  },
+  {
+    "question": "¿A través de que órgano respiran los peces?",
+    "options": [
+      "Los pulmones",
+      "Las branquias",
+      "La nariz"
+    ],
+    "correctAnswer": 1,
+    "id": "1755455297870",
+    "category": "biologia",
+    "image": null
+  },
+  {
+    "question": "¿Cómo se llama cada mitad de la tierra?",
+    "options": [
+      "Ecuador",
+      "Hemisferio norte y sur",
+      "Meridiano de Greenwich"
+    ],
+    "correctAnswer": 1,
+    "id": "1755455390339",
+    "category": "geografia",
+    "image": null
+  },
+  {
+    "question": "¿De qué está formado el planeta principalmente?",
+    "options": [
+      "Tierra",
+      "Arboles",
+      "Agua"
+    ],
+    "correctAnswer": 2,
+    "id": "1755455550807",
+    "category": "biologia",
+    "image": null
+  },
+  {
+    "question": "¿En qué continente está Guayana Francesa?",
+    "options": [
+      "Asia",
+      "América",
+      "Europa"
+    ],
+    "correctAnswer": 1,
+    "id": "1755455702982",
+    "category": "geografia",
+    "image": null
   }
 ]

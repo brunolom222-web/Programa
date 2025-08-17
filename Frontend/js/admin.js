@@ -41,41 +41,77 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 5. Añadir nueva pregunta
-    addQuestionBtn.addEventListener('click', () => {
-        if (!isAdmin) {
-            alert('Error: No tiene permisos de administrador');
-            return;
+// Modifica el event listener del botón de añadir pregunta
+addQuestionBtn.addEventListener('click', async () => {
+  if (!isAdmin) {
+    alert('Error: No tiene permisos de administrador');
+    return;
+  }
+
+  const questionData = {
+    question: document.getElementById('questionText').value.trim(),
+    options: [
+      document.getElementById('option1').value.trim(),
+      document.getElementById('option2').value.trim(),
+      document.getElementById('option3').value.trim()
+    ],
+    correctAnswer: parseInt(document.getElementById('correctOption').value),
+    category: document.getElementById('questionCategory').value
+  };
+
+  // Validación
+  if (!questionData.question || questionData.options.some(opt => !opt)) {
+    alert('Por favor complete todos los campos');
+    return;
+  }
+
+  const imageInput = document.getElementById('questionImage');
+  const imageFile = imageInput.files[0];
+
+  try {
+    if (imageFile) {
+      // Si hay imagen, usar la nueva ruta HTTP
+      const formData = new FormData();
+      formData.append('questionData', JSON.stringify(questionData));
+      formData.append('image', imageFile);
+
+      const response = await fetch('/api/questions-with-image', {
+        method: 'POST',
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert('Pregunta con imagen añadida exitosamente');
+        resetForm();
+      } else {
+        alert(result.error || 'Error al añadir pregunta con imagen');
+      }
+    } else {
+      // Si no hay imagen, usar el método existente con socket.io
+      socket.emit('addQuestion', questionData, (response) => {
+        if (response.success) {
+          alert('Pregunta añadida exitosamente');
+          resetForm();
+        } else {
+          alert(response.error || 'Error al añadir pregunta');
         }
+      });
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Ocurrió un error al procesar la pregunta');
+  }
+});
 
-        const questionData = {
-            question: document.getElementById('questionText').value.trim(),
-            options: [
-                document.getElementById('option1').value.trim(),
-                document.getElementById('option2').value.trim(),
-                document.getElementById('option3').value.trim()
-            ],
-            correctAnswer: parseInt(document.getElementById('correctOption').value),
-            category: document.getElementById('questionCategory').value // ← Nueva línea
-        };
-
-        // Validación
-        if (!questionData.question || questionData.options.some(opt => !opt)) {
-            alert('Por favor complete todos los campos');
-            return;
-        }
-
-        socket.emit('addQuestion', questionData, (response) => {
-            if (response.success) {
-                alert('Pregunta añadida exitosamente');
-                document.getElementById('questionText').value = '';
-                document.getElementById('option1').value = '';
-                document.getElementById('option2').value = '';
-                document.getElementById('option3').value = '';
-            } else {
-                alert(response.error || 'Error al añadir pregunta');
-            }
-        });
-    });
+function resetForm() {
+  document.getElementById('questionText').value = '';
+  document.getElementById('option1').value = '';
+  document.getElementById('option2').value = '';
+  document.getElementById('option3').value = '';
+  document.getElementById('questionImage').value = '';
+}
 
     // 6. Mostrar preguntas al recibir datos iniciales
     socket.on('initData', (data) => {

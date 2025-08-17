@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     "matematicas": "url('/img/matematica.jpeg')",
     "deportes": "url('/img/deporte.jpeg')",
     "adivinanza": "url('/img/adivinanza.jpeg')",
-    "curiosidades": "url('/img/curiosidades.jpeg')" // Imagen genérica
+    "curiosidades": "url('/img/curiosidades.jpeg')", 
+    "entretenimiento": "url('/img/entretenimiento.jpeg')" 
 };
 
     // 1. Configuración inicial
@@ -115,9 +116,31 @@ function displayQuestion(questionData) {
     questionContainer.style.textAlign = "center";
     questionContainer.style.textShadow = "1px 1px 3px rgba(0, 0, 0, 0)";
     questionContainer.style.marginBottom = "20px";
-    questionContainer.innerHTML = `<h3 style="margin: 0;">${questionData.question}</h3>`;
+    
+    // Limpiar contenedor de pregunta
+    questionContainer.innerHTML = '';
+    
+    // Mostrar texto de la pregunta
+    const questionText = document.createElement('h3');
+    questionText.style.margin = "0";
+    questionText.textContent = questionData.question;
+    questionContainer.appendChild(questionText);
+    
+    // Mostrar imagen si existe
+    if (questionData.image) {
+        const questionImage = document.createElement('img');
+        questionImage.src = questionData.image;
+        questionImage.alt = "Imagen de la pregunta";
+        questionImage.style.maxWidth = "100%";
+        questionImage.style.maxHeight = "200px";
+        questionImage.style.display = "block";
+        questionImage.style.margin = "15px auto";
+        questionImage.style.borderRadius = "8px";
+        questionImage.style.boxShadow = "0 2px 5px rgba(0,0,0,0.2)";
+        questionContainer.appendChild(questionImage);
+    }
 
-    // Opciones de respuesta
+    // Opciones de respuesta (manteniendo el código existente)
     optionsContainer.innerHTML = '';
     questionData.options.forEach((option, index) => {
         const button = document.createElement('button');
